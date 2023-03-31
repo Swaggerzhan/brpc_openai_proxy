@@ -1,0 +1,24 @@
+syntax = "proto2";
+option cc_generic_services = true;
+
+message HttpRequest {}
+message HttpResponse {}
+
+service HttpService {
+  rpc signup (HttpRequest) returns (HttpResponse);
+  rpc chat_create (HttpRequest) returns (HttpResponse);
+  rpc login (HttpRequest) returns (HttpResponse);
+  rpc chat_delete (HttpRequest) returns (HttpResponse);
+  rpc chat (HttpRequest) returns (HttpResponse);
+  rpc chat_history (HttpRequest) returns (HttpResponse);
+}
+
+message ChatRequestBody {
+  required int64 user_id = 1;
+  required string question = 2;
+}
+
+message ChatResponseBody {
+  required int64 user_id = 1;
+  required string answer = 2;
+}
